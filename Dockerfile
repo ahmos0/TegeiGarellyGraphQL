@@ -9,7 +9,7 @@ COPY . ./
 
 RUN GOOS=linux GOARCH=amd64 go build -mod=readonly -v -o server
 
+CMD ["/app/server"]
+
 EXPOSE 8080
 
-# バイナリファイルを実行
-CMD ./server
