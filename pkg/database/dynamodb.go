@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"github.com/ahmos0/DyanamodbConnectMobile/pkg/models"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"log"
 	"os"
 
@@ -30,8 +31,13 @@ func GetAllItems() ([]models.Item, error) {
 	fmt.Printf("Found %d items in the table.\n", len(result.Items))
 	var items []models.Item
 
-	for i, item := range result.Items {
-		fmt.Printf("Item %d: %v\n", i, item)
+	for _, item := range result.Items {
+		var newItem models.Item
+		err := dynamodbattribute.UnmarshalMap(item, &newItem)
+		if err != nil {
+			return nil, fmt.Errorf("Error unmarshalling item: %v", err)
+		}
+		items = append(items, newItem)
 	}
 
 	return items, nil
