@@ -11,13 +11,13 @@ var itemType = graphql.NewObject(
 			"uuid": &graphql.Field{
 				Type: graphql.NewNonNull(graphql.String),
 			},
-			"worksName": &graphql.Field{
+			"works": &graphql.Field{
 				Type: graphql.NewNonNull(graphql.String),
 			},
 			"author": &graphql.Field{
 				Type: graphql.NewNonNull(graphql.String),
 			},
-			"imageUrl": &graphql.Field{
+			"url": &graphql.Field{
 				Type: graphql.NewNonNull(graphql.String),
 			},
 			"other": &graphql.Field{
@@ -51,13 +51,13 @@ var mutationType = graphql.NewObject(
 					"uuid": &graphql.ArgumentConfig{
 						Type: graphql.NewNonNull(graphql.String),
 					},
-					"worksName": &graphql.ArgumentConfig{
+					"works": &graphql.ArgumentConfig{
 						Type: graphql.NewNonNull(graphql.String),
 					},
 					"author": &graphql.ArgumentConfig{
 						Type: graphql.NewNonNull(graphql.String),
 					},
-					"imageUrl": &graphql.ArgumentConfig{
+					"url": &graphql.ArgumentConfig{
 						Type: graphql.NewNonNull(graphql.String),
 					},
 					"other": &graphql.ArgumentConfig{
@@ -66,9 +66,9 @@ var mutationType = graphql.NewObject(
 				},
 				Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 					uuid, _ := params.Args["uuid"].(string)
-					worksName, _ := params.Args["worksName"].(string)
+					worksName, _ := params.Args["works"].(string)
 					author, _ := params.Args["author"].(string)
-					imageUrl, _ := params.Args["imageUrl"].(string)
+					imageUrl, _ := params.Args["url"].(string)
 					other, _ := params.Args["other"].(string)
 					return saveItem(uuid, worksName, author, imageUrl, other)
 				},
