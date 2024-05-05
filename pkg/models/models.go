@@ -1,9 +1,9 @@
 package models
 
 type Item struct {
-	uuid   string
-	works  string
-	author string
-	url    string
-	other  string
+	UUID     string `json:"uuid"`
+	WorkName string `json:"works"`
+	Author   string `json:"author"`
+	ImageURL string `json:"imageUrl"`
+	Other    string `json:"other"`
 }
