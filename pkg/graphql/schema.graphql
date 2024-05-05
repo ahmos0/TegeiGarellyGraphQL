@@ -1,13 +1,13 @@
 type Item {
     uuid: String!
-    worksName: String!
+    works: String!
     author: String!
-    imageUrl: String!
+    url: String!
     other: String!
 }
 
 type Mutation {
-    putItem(uuid: String! worksName: String! author: String! imageUrl: String! other: String!): Item!
+    putItem(uuid: String! works: String! author: String! url: String! other: String!): Item!
 }
 
 type Query {
